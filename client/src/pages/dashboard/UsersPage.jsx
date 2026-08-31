@@ -112,28 +112,30 @@ const UsersPage = () => {
                     {users.map((u) => {
                         const isSelf = u._id === currentUser?._id;
                         return (
-                            <div key={u._id} className="complaint-card">
+                            <div key={u._id} className="complaint-card user-row">
                                 <div className="avatar">{u.name?.[0]?.toUpperCase()}</div>
                                 <div className="complaint-info">
                                     <div className="desc">{u.name}{isSelf && ' (you)'}</div>
                                     <div className="meta">{u.email}</div>
                                 </div>
-                                <span className="badge" style={{ background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
-                                    {u.role}
-                                </span>
-                                <div style={{ display: 'flex', gap: 8, marginLeft: 8 }}>
-                                    <button className="icon-btn" onClick={() => openEdit(u)} aria-label="Edit user">
-                                        <Pencil size={15} />
-                                    </button>
-                                    <button
-                                        className="icon-btn"
-                                        onClick={() => setDeletingUser(u)}
-                                        disabled={isSelf}
-                                        title={isSelf ? "You can't delete your own account here" : 'Delete user'}
-                                        aria-label="Delete user"
-                                    >
-                                        <Trash2 size={15} />
-                                    </button>
+                                <div className="user-row-actions">
+                                    <span className="badge" style={{ background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
+                                        {u.role}
+                                    </span>
+                                    <div style={{ display: 'flex', gap: 8 }}>
+                                        <button className="icon-btn" onClick={() => openEdit(u)} aria-label="Edit user">
+                                            <Pencil size={15} />
+                                        </button>
+                                        <button
+                                            className="icon-btn"
+                                            onClick={() => setDeletingUser(u)}
+                                            disabled={isSelf}
+                                            title={isSelf ? "You can't delete your own account here" : 'Delete user'}
+                                            aria-label="Delete user"
+                                        >
+                                            <Trash2 size={15} />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         );

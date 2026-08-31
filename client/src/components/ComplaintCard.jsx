@@ -31,9 +31,9 @@ const ComplaintCard = ({ complaint }) => {
                 <div className="desc">{complaint.description}</div>
                 <div className="meta">
                     <span>{complaint.category?.name || 'Uncategorized'}</span>
-                    <span>&middot;</span>
+                    <span className="meta-dot">&middot;</span>
                     <span>{complaint.location?.address || 'No location'}</span>
-                    <span>&middot;</span>
+                    <span className="meta-dot">&middot;</span>
                     <span>{timeAgo(complaint.createdAt)}</span>
                 </div>
             </div>
