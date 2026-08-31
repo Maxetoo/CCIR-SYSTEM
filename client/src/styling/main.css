@@ -25,6 +25,8 @@
 html, body {
     margin: 0;
     padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -32,10 +34,18 @@ body {
     background: var(--color-bg);
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
 }
 
 #root {
     min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 a {

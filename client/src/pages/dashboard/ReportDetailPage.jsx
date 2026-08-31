@@ -100,7 +100,7 @@ const ReportDetailPage = () => {
                 />
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: isStaff ? '1.6fr 1fr' : '1fr', gap: 24 }}>
+            <div className="report-detail-grid" style={{ display: 'grid', gridTemplateColumns: isStaff ? '1.6fr 1fr' : '1fr', gap: 24 }}>
                 <div>
                     <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
                         <StatusBadge status={current.status} />

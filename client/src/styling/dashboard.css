@@ -2,6 +2,11 @@
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     min-height: 100vh;
+    max-width: 100vw;
+}
+
+.app-shell>* {
+    min-width: 0;
 }
 
 .sidebar {
@@ -18,10 +23,78 @@
 .sidebar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
     padding: 4px 8px 28px;
+}
+
+.sidebar-brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 800;
     font-size: 1.15rem;
+    color: inherit;
+}
+
+.sidebar-close {
+    display: none;
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    padding: 4px;
+}
+
+
+/* Mobile header (hamburger + brand), hidden on desktop */
+
+.mobile-header {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    height: 80px;
+    padding: 0 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 150;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.mobile-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.mobile-header-brand img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.mobile-header-spacer {
+    margin-left: auto;
+}
+
+.hamburger-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    flex-shrink: 0;
+}
+
+.sidebar-backdrop {
+    display: none;
 }
 
 .sidebar-brand .brand-mark {
@@ -162,13 +235,21 @@
     padding: 28px 40px 60px;
     max-width: 1180px;
     width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
 }
 
 .topbar {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 16px;
     margin-bottom: 32px;
+}
+
+.topbar-heading {
+    min-width: 0;
+    flex: 1;
 }
 
 .topbar h1 {
@@ -180,6 +261,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    flex-shrink: 0;
 }
 
 .icon-btn {
@@ -283,7 +365,8 @@
     font-weight: 800;
 }
 
-.section-header a, .section-header button.link {
+.section-header a,
+.section-header button.link {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--color-primary);
@@ -408,10 +491,52 @@
     .app-shell {
         grid-template-columns: 1fr;
     }
+    .mobile-header {
+        display: flex;
+    }
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        max-width: 85vw;
+        height: 100vh;
+        z-index: 220;
+        box-shadow: var(--shadow-lg);
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .sidebar-close {
+        display: flex;
+    }
+    .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(18, 20, 43, 0.45);
+        z-index: 210;
     }
     .main-content {
-        padding: 20px;
+        padding: 20px 16px 40px;
+    }
+    .report-detail-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar h1 {
+        font-size: 1.35rem;
+    }
+    .complaint-card {
+        flex-wrap: wrap;
+    }
+    .complaint-badges {
+        flex-direction: row;
+        align-items: center;
+        margin-left: auto;
     }
 }

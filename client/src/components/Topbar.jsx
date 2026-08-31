@@ -7,7 +7,7 @@ const Topbar = ({ title, subtitle, actions }) => {
 
     return (
         <div className="topbar">
-            <div>
+            <div className="topbar-heading">
                 <h1>{title}</h1>
                 {subtitle && <p style={{ color: 'var(--color-text-muted)', marginTop: 4 }}>{subtitle}</p>}
             </div>
