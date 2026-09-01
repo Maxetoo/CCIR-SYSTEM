@@ -36,7 +36,7 @@ app.use(limiter);
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com', 
+    imgSrc: ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com',
     'https://lh3.googleusercontent.com'
     ],
   },
